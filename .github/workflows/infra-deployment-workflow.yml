@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'tools/deploy/module0/**'
+      - './tools/deploy/module0/**'
   
   workflow_dispatch:
 env:
@@ -21,8 +21,10 @@ jobs:
 
       # Checkout code
     - uses: actions/checkout@v4
-    - name: Install Bicep
-      run: az bicep install
+
+    - name: List contents of the deploy folder
+      run: ls -R ./tools/deploy/module0
+      
       # Log into Azure
     - uses: azure/login@v1
       with:
@@ -33,7 +35,7 @@ jobs:
 
       # Deploy Bicep file
     - name: deploy
-      uses: azure/arm-deploy@v1
+      uses: azure/arm-deploy@v2
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ secrets.CLUSTER_RESOURCE_GROUP }}
