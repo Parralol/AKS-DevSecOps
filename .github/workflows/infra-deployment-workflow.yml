@@ -22,6 +22,9 @@ jobs:
       # Checkout code
     - uses: actions/checkout@v4
 
+    - name: List contents of the deploy folder
+      run: ls -R ./tools/deploy/module0
+      
       # Log into Azure
     - uses: azure/login@v1
       with:
