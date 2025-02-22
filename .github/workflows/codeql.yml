@@ -59,16 +59,16 @@ jobs:
     - name: Build Java
       run: |
         mvn clean package -f tools/deploy/module2/pom.xml
-
+        ls -R tools/deploy/module2/target
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
-        source-root: tools/deploy/module2/target
         
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{ matrix.language }}"
+        working-dir: tools/deploy/module2/target
