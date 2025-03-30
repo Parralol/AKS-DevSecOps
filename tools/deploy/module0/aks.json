@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.34.44.8038",
-      "templateHash": "16440714758454418214"
+      "templateHash": "8755660874021522485"
     }
   },
   "parameters": {
@@ -92,8 +92,7 @@
         "aadProfile": {
           "managed": true,
           "enableAzureRBAC": true
-        },
-        "enableWorkloadIdentity": true
+        }
       }
     },
     {
