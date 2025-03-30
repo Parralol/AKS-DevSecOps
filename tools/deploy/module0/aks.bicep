@@ -52,14 +52,14 @@ resource aks 'Microsoft.ContainerService/managedClusters@2025-01-01' = {
         osType: 'Linux'
         mode: 'System'
       }
-    ]    
+    ]
     aadProfile: {
       managed: true
       enableAzureRBAC: true
-    }    
+    }
+    enableWorkloadIdentity: true // Add this line to enable Workload Identity
   }
 }
-
 resource akv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   name: akvName
   location: location
