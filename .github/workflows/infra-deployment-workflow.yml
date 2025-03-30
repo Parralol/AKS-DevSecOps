@@ -36,7 +36,7 @@ jobs:
       # Compile Bicep file to ARM template
     - name: Compile Bicep to ARM template
       run: |
-        az bicep build --file ./tools/deploy/module0/aks.bicep --out-file ./tools/deploy/module0/aks.json
+        az bicep build --file ./tools/deploy/module0/aks.bicep
 
       # Deploy ARM template
     - name: Deploy AKS using ARM template
