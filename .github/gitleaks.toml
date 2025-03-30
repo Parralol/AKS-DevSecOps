@@ -1,0 +1,9 @@
+[[rules]]
+  description = "Custom API Key detection"
+  regex = '''APIKEY-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}'''
+  tags = ["apikey"]
+
+[[rules]]
+  description = "Generic 32-char Token"
+  regex = '''[A-Za-z0-9]{32}'''
+  tags = ["token"]
