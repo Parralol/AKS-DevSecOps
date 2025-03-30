@@ -45,7 +45,6 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ secrets.CLUSTER_RESOURCE_GROUP }}
         template: ./tools/deploy/module0/aks.json
-        parameters: ./tools/deploy/module0/azuredeploy.parameters.json
         failOnStdErr: false
 
       # az feature register for Lab 1
