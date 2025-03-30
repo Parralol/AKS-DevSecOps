@@ -36,7 +36,7 @@ jobs:
       # Compile Bicep file to ARM template
     - name: Compile Bicep to ARM template
       run: |
-        az bicep build --file ./tools/deploy/module0/aks.bicep --out-file ./tools/deploy/module0/aks.json
+        az bicep build --file ./tools/deploy/module0/aks.bicep
 
       # Deploy ARM template
     - name: Deploy AKS using ARM template
@@ -45,7 +45,6 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ secrets.CLUSTER_RESOURCE_GROUP }}
         template: ./tools/deploy/module0/aks.json
-        parameters: ./tools/deploy/module0/azuredeploy.parameters.json
         failOnStdErr: false
 
       # az feature register for Lab 1
