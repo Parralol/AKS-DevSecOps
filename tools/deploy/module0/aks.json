@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.34.44.8038",
-      "templateHash": "13749592372313485881"
+      "templateHash": "8755660874021522485"
     }
   },
   "parameters": {
@@ -72,7 +72,7 @@
     },
     {
       "type": "Microsoft.ContainerService/managedClusters",
-      "apiVersion": "2022-09-02-preview",
+      "apiVersion": "2025-01-01",
       "name": "[parameters('clusterName')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -109,7 +109,7 @@
         "accessPolicies": [
           {
             "tenantId": "[subscription().tenantId]",
-            "objectId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName')), '2022-09-02-preview', 'full').identity.principalId]",
+            "objectId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName')), '2025-01-01', 'full').identity.principalId]",
             "permissions": {
               "keys": [
                 "get"
@@ -129,7 +129,7 @@
   "outputs": {
     "controlPlaneFQDN": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName')), '2022-09-02-preview').fqdn]"
+      "value": "[reference(resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName')), '2025-01-01').fqdn]"
     }
   }
 }
