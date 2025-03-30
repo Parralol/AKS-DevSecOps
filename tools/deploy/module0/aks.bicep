@@ -19,7 +19,7 @@ param location string = resourceGroup().location
 param agentCount int = 2
 
 @description('VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions')
-param agentVMSize string = 'Standard_DS2_v2'
+param agentVMSize string = 'Standard_B2s'
 
 // create azure container registry
 resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
@@ -57,17 +57,6 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-09-02-preview' = {
       managed: true
       enableAzureRBAC: true
     }    
-  }
-}
-
-var acrPullRoleDefinitionId = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')
-resource acrPullRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(resourceGroup().id, aks.id, acrPullRoleDefinitionId)
-  scope: acr
-  properties: {
-    principalId: aks.properties.identityProfile.kubeletidentity.objectId
-    roleDefinitionId: acrPullRoleDefinitionId
-    principalType: 'ServicePrincipal'
   }
 }
 
