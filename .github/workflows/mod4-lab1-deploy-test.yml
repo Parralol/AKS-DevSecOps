@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
 
 env:
-  TEST_AZURE_CONTAINER_REGISTRY: ${{ prueba.TEST_AZURE_CONTAINER_REGISTRY }}
-  TEST_RESOURCE_GROUP: ${{ prueba.TEST_RESOURCE_GROUP }}
-  TEST_CLUSTER_NAME: ${{ prueba.TEST_CLUSTER_NAME }}
-  TEST_DEPLOYMENT_MANIFEST_PATH: ${{ prueba.TEST_DEPLOYMENT_MANIFEST_PATH }}
+  TEST_AZURE_CONTAINER_REGISTRY: ${{ vars.TEST_AZURE_CONTAINER_REGISTRY }}
+  TEST_RESOURCE_GROUP: ${{ vars.TEST_RESOURCE_GROUP }}
+  TEST_CLUSTER_NAME: ${{ vars.TEST_CLUSTER_NAME }}
+  TEST_DEPLOYMENT_MANIFEST_PATH: ${{ vars.TEST_DEPLOYMENT_MANIFEST_PATH }}
 
 permissions:
   id-token: write # This is required for requesting the JWT
@@ -18,7 +18,7 @@ permissions:
 jobs:
   PushImagetoACR:
     name: Push Sample Image to ACR and AKS
-    environment: test
+    environment: prueba
     permissions:
       contents: read
       id-token: write
